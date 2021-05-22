@@ -1,6 +1,7 @@
 import HeroSection from './components/HeroSection';
 import EpisodeSection from './components/EpisodeSection';
 import ConnectSection from './components/ConnectSection';
+import FooterSection from './components/FooterSection';
 import './Main.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
 		<HeroSection/>
 		<EpisodeSection/>
 		<ConnectSection/>
+		<FooterSection/>
     </main>
   );
 }
