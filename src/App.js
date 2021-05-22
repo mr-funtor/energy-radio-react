@@ -1,5 +1,6 @@
 import HeroSection from './components/HeroSection';
 import EpisodeSection from './components/EpisodeSection';
+import ConnectSection from './components/ConnectSection';
 import './Main.css';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <main class="body-container">
 		<HeroSection/>
 		<EpisodeSection/>
+		<ConnectSection/>
     </main>
   );
 }
