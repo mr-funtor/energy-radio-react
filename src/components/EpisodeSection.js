@@ -2,17 +2,17 @@ import React from 'react';
 
 const EpisodeSection=()=>{
 	return(
-		<section class="episodes-section">
-			<nav class="info-container">
-				<button class="active"> <img src="./img/episode.png"/>Episodes</button>
+		<section className="episodes-section">
+			<nav className="info-container">
+				<button className="active"> <img src="./img/episode.png"/>Episodes</button>
 				<button>Info</button>
 			</nav>
 			
-			<div class="header-container">
+			<div className="header-container">
 				<div>
 					<span>
-						<div class="top-dash"></div>
-						<div class="video-box">
+						<div className="top-dash"></div>
+						<div className="video-box">
 							<img src="./img/play-white.png"/>
 							<img src="./img/play-box.png"/>
 						</div>
@@ -23,8 +23,8 @@ const EpisodeSection=()=>{
 				<button>Season 1 <img src="./img/down-arrow.png"/></button>
 			</div>
 			
-			<div class="episodes-container">
-				<article class="episode-box">
+			<div className="episodes-container">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -33,7 +33,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -42,7 +42,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -51,7 +51,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -60,7 +60,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -69,7 +69,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -78,7 +78,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -87,7 +87,7 @@ const EpisodeSection=()=>{
 					</footer>
 				</article>
 				
-				<article class="episode-box">
+				<article className="episode-box">
 					<header></header>
 					
 					<footer>
@@ -98,7 +98,7 @@ const EpisodeSection=()=>{
 				
 			</div>
 			
-			<button class="load-more">Load More</button>
+			<button className="load-more">Load More</button>
 		</section>
 	)
 }
