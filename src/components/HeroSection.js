@@ -4,24 +4,26 @@ import {useEpisodeGlobalContext} from './EpisodeGlobalContext';
 
 const HeroSection=({theData})=>{
 	const {changeYoutubeVideo,theIframe,heroImage,heroContent}=useEpisodeGlobalContext();
-	const [presentYoutube,setPresentYoutube]=useState();//this is for the Youtube URL's
+	const [presentYoutube,setPresentYoutube]=useState('');//this is for the Youtube URL's
+	const [heroIndex, setHeroIndex]=useState(0);
 	
 	
 	
 	//PICKING THE RANDOM PICTURE/VIDEO THAT WILL SHOW ON THE HERO
 	const randomGenerator=()=>{
-		let newData= theData.slice(0,7);//this is propdrilled form App.js
-		console.log(newData)
-		let newIndex= Math.floor(Math.random()*newData.length);//picks a random number
-		heroImage.current.src=newData[newIndex].mainImage.asset.url;//changes the hero image that shows using the random number picked
+		// let newData= theData.slice(0,7);//'theData' is propdrilled form App.js
+		// console.log(newData)
+		let newIndex= Math.floor(Math.random()*theData.length);//picks a random number
+		setHeroIndex(newIndex)
+		heroImage.current.src=theData[newIndex].mainImage.asset.url;//changes the hero image that shows using the random number picked
 		
-		setPresentYoutube(newData[newIndex].URL)//sets the Youtube video url/source
+		setPresentYoutube(theData[newIndex].URL)//sets the Youtube video url/source
 	}
 
 	
 	useEffect(()=>{
 		randomGenerator();
-		
+		console.log(theData)
 	},[])
 	
 	
@@ -43,10 +45,8 @@ const HeroSection=({theData})=>{
 					
 					
 					<div className="details-lower">
-						<h1>Black Coffee</h1>
-						<p>On the other hand, we denounce with righteous indignation 
-						and dislike men who are so beguiled and 
-						demoralized by the charms of pleasure of the moment.</p>
+						<h1>{theData[heroIndex].title}</h1>
+						<p>{theData[heroIndex].description}</p>
 						<button onClick={()=>changeYoutubeVideo(presentYoutube)} title="Play" > <img src="./img/play.png" alt=""/>WATCH NOW</button>
 					</div>
 				</div>

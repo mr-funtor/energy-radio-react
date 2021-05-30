@@ -25,7 +25,7 @@ function App() {
 							},
 							alt
 						}
-		}`
+		}[0...5]`
 		);
 		
 		// const response = await fetch(url);

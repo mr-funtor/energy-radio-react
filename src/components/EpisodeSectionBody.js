@@ -4,21 +4,25 @@ import {useEpisodeGlobalContext} from './EpisodeGlobalContext';
 
 const EpisodeSectionBody=()=>{
 	const{changeYoutubeVideo}=useEpisodeGlobalContext();
-	const [seasonId, setSeasonId]=useState({})
+	const [seasonsId, setSeasonsId]=useState([])
 	const [theData,setTheData]=useState([]);
 	const [seasonActive, setSeasonActive]=useState(false);
+	
+	//SETTING INITIAL SEASON TO SEASON 1
 	
 	//this picks the first season from Sanity IO
 	//here we fetch the 1st season id from sanity IO 
 	const fetchSeason= useCallback(async()=>{
-		const response=await sanityClient.fetch(`*[_type=="seasons"][0]._id`)
+		const response=await sanityClient.fetch(`*[_type=="seasons"]._id`)
 		
 		// const data= await response.json();
-		// setSeasonId(response)
-		getEpisodes(response)
+		setSeasonsId(response)
+		getEpisodes(response[0])
 		
 		console.log(response)
 	})
+	
+	//SWITCHING TO A PARTICULAR SEASON
 	
 	//this brings out only episodes that are linked to a particular season
 	//the seasons' reference is gotten throught the id passed called 'theId'
@@ -35,7 +39,7 @@ const EpisodeSectionBody=()=>{
 							},
 							alt
 						}
-		}[0...8]`
+		}[0...8]|order(title asc)`
 		);
 		
 		// const response = await fetch(url);
@@ -43,12 +47,16 @@ const EpisodeSectionBody=()=>{
 		// const data = await response.json();
 		setTheData(response);
 		// setIsLoading(false);
+		
+		setSeasonActive(false)//this makes the dropdown menu go back up
 	  }, []);
 	
 	useEffect(()=>{
 		// getEpisodes()
 		fetchSeason()
 	},[])
+	
+	
 	
 	
 	return(
@@ -66,7 +74,16 @@ const EpisodeSectionBody=()=>{
 				</div>
 				
 				<button onClick={()=>setSeasonActive(!seasonActive)}>Season 1 <img src="./img/down-arrow.png" alt="" /></button>
-				<div className={seasonActive?"episodes-dropdown active" :"episodes-dropdown"} ></div>
+				<ul className={seasonActive?"episodes-dropdown active" :"episodes-dropdown"} >
+				{
+					seasonsId.map((item, index)=>{
+						return(
+						<li onClick={()=>getEpisodes(item)} >Season {index+1}</li>
+						)
+					})
+				}	
+					
+				</ul>
 			</div>
 			
 			<div className="episodes-container">
