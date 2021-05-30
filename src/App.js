@@ -7,8 +7,6 @@ import sanityClient from './client.js';
 import './Main.css';
 
 
-const url = 'https://course-api.com/javascript-store-products'
-
 function App() {
 	const [isLoading,setIsLoading]=useState(true);
 	const [theData,setTheData]=useState();
@@ -38,18 +36,6 @@ function App() {
 	
 	useEffect(()=>{
 		getImages ()
-		// sanityClient.fetch(`*[_type == "post"]{
-			// title,
-			// slug,
-			// mainImage{
-				// asset->{
-					// _id,
-					// url
-				// },
-				// alt
-			// }
-		// }`)
-		// .then(data=>console.log(data))
 	},[])
 
 	//SET THE LOADING ANIMATION

@@ -220,7 +220,7 @@ svg rect{
 	display:flex;
 	align-items:center;
 	justify-content:space-evenly;
-	/* margin: 0 3px; */
+	margin: 0 5px;
 	cursor:pointer;
 }
 
@@ -240,6 +240,7 @@ svg rect{
 }
 
 .header-container{
+	position:relative;
 	display:flex;
 	align-items:center;
 	justify-content:space-between;
@@ -282,17 +283,40 @@ svg rect{
 	font-family: 'Space Grotesk',sans-serif;
 	width: 150px;
 	height: 35px;
-	background:transparent;
+	background:#393737;
 	color:white;
 	border-radius: 48px;
 	border:1px solid #A5F200;
 	display:flex;
 	align-items:center;
 	justify-content:space-evenly;
+	z-index: 5;
 	cursor:pointer;
 }
 
+.episodes-dropdown{
+	position:absolute;
+	top:10px;
+	right:12px;
+	min-height: 30px;
+	width: 122px;
+	background:coral;
+	border: 1px solid #A5F200;
+	border-top:none;
+	opacity:0;
+	visibility:hidden;
+	transition:all 0.3s ease-in;
+}
+
+.episodes-dropdown.active{
+	top:30px;
+	opacity:1;
+	visibility:visible;
+}
+
 .episodes-container{
+	width:100%;
+	height:100%;
 	display:grid;
 	/* flex-wrap:wrap; */
 	grid-template-columns: repeat(auto-fit, 290px);

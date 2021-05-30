@@ -6,12 +6,12 @@ const HeroSection=({theData})=>{
 	const  heroContent= useRef(null);//this references contents on the hero section
 	const theIframe=useRef(null);
 	
-	
+	//PICKING THE RANDOM PICTURE/VIDEO THAT WILL SHOW ON THE HERO
 	const randomGenerator=()=>{
-		let newData= theData.slice(0,7);
+		let newData= theData.slice(0,7);//this is propdrilled form App.js
 		console.log(newData)
 		let newIndex= Math.floor(Math.random()*newData.length);//picks a random number
-		heroImage.current.src=newData[newIndex].mainImage.asset.url;//changes the hero image that shows
+		heroImage.current.src=newData[newIndex].mainImage.asset.url;//changes the hero image that shows using the random number picked
 		
 		setPresentYoutube(newData[newIndex].URL)//sets the Youtube video url/source
 	}
@@ -41,6 +41,7 @@ const HeroSection=({theData})=>{
 		<section className="hero-section" >
 		
 			<div className="top-youtube " id="video-placeholder" ><iframe  ref={theIframe} src='https://www.youtube.com/embed/XqUQbAUnIkc?'
+				title='video'
 			/></div>
 			
 			
@@ -49,7 +50,7 @@ const HeroSection=({theData})=>{
 			<div ref={heroContent} className="hero-content">
 				<div className="hero-details">
 				
-						<img src="./img/energy-logo.png"/>
+						<img src="./img/energy-logo.png" alt=""/>
 					
 					
 					<div className="details-lower">
@@ -57,7 +58,7 @@ const HeroSection=({theData})=>{
 						<p>On the other hand, we denounce with righteous indignation 
 						and dislike men who are so beguiled and 
 						demoralized by the charms of pleasure of the moment.</p>
-						<button onClick={()=>changeYoutubeVideo()} title="Play" > <img src="./img/play.png"/>WATCH NOW</button>
+						<button onClick={()=>changeYoutubeVideo()} title="Play" > <img src="./img/play.png" alt=""/>WATCH NOW</button>
 					</div>
 				</div>
 			
