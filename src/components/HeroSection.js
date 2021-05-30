@@ -1,10 +1,12 @@
 import React,{useState,useEffect,useRef} from 'react';
+import {useEpisodeGlobalContext} from './EpisodeGlobalContext';
+
 
 const HeroSection=({theData})=>{
+	const {changeYoutubeVideo,theIframe,heroImage,heroContent}=useEpisodeGlobalContext();
 	const [presentYoutube,setPresentYoutube]=useState();//this is for the Youtube URL's
-	const  heroImage= useRef(null);//this references the full image that shows
-	const  heroContent= useRef(null);//this references contents on the hero section
-	const theIframe=useRef(null);
+	
+	
 	
 	//PICKING THE RANDOM PICTURE/VIDEO THAT WILL SHOW ON THE HERO
 	const randomGenerator=()=>{
@@ -14,19 +16,6 @@ const HeroSection=({theData})=>{
 		heroImage.current.src=newData[newIndex].mainImage.asset.url;//changes the hero image that shows using the random number picked
 		
 		setPresentYoutube(newData[newIndex].URL)//sets the Youtube video url/source
-	}
-	
-	const changeYoutubeVideo=()=>{
-		
-		//RESTRUCTURE THE YOUTUBE LINK FROM 'WATCH' TO 'EMBED'
-		let newNumb=presentYoutube.indexOf('watch?v=')+8;
-		let newExtract=presentYoutube.slice(newNumb,newNumb+11);//this extracts the Youtube videoID
-		
-		let newURL= `https://www.youtube.com/embed/${newExtract}?autoplay=1`
-		console.log(newExtract,newURL)
-		theIframe.current.src=newURL
-		heroContent.current.classList.add('inactive');//hides the hero contents
-		heroImage.current.classList.add('inactive');//hides the hero Image
 	}
 
 	
@@ -42,7 +31,7 @@ const HeroSection=({theData})=>{
 		
 			<div className="top-youtube " id="video-placeholder" ><iframe  ref={theIframe} src='https://www.youtube.com/embed/XqUQbAUnIkc?'
 				title='video'
-			/></div>
+			></iframe></div>
 			
 			
 			<img ref={heroImage} src="" alt="a man wearing a pair of glasses"/>
@@ -58,7 +47,7 @@ const HeroSection=({theData})=>{
 						<p>On the other hand, we denounce with righteous indignation 
 						and dislike men who are so beguiled and 
 						demoralized by the charms of pleasure of the moment.</p>
-						<button onClick={()=>changeYoutubeVideo()} title="Play" > <img src="./img/play.png" alt=""/>WATCH NOW</button>
+						<button onClick={()=>changeYoutubeVideo(presentYoutube)} title="Play" > <img src="./img/play.png" alt=""/>WATCH NOW</button>
 					</div>
 				</div>
 			

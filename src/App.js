@@ -4,6 +4,7 @@ import EpisodeSection from './components/EpisodeSection';
 import ConnectSection from './components/ConnectSection';
 import FooterSection from './components/FooterSection';
 import sanityClient from './client.js';
+// import {useEpisodeGlobalContext} from './components/EpisodeGlobalContext';
 import './Main.css';
 
 
@@ -28,7 +29,7 @@ function App() {
 		);
 		
 		// const response = await fetch(url);
-		console.log(response)
+		// console.log(response)
 		// const data = await response.json();
 		setTheData(response);
 		setIsLoading(false);
